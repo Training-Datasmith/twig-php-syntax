@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Squirrel\TwigPhpSyntax;
 
 use Squirrel\TwigPhpSyntax\ExpressionParser\BinaryOperatorExpressionParser;

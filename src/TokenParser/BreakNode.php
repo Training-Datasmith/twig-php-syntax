@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Squirrel\TwigPhpSyntax\TokenParser;
 
 use Twig\Attribute\YieldReady;
@@ -21,7 +23,7 @@ final class BreakNode extends Node
     {
         $compiler
             ->addDebugInfo($this)
-            ->write("break " . $this->loopNumber . ";\n")
+            ->write('break ' . $this->loopNumber . ";\n")
         ;
     }
 }

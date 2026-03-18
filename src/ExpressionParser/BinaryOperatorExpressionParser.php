@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Squirrel\TwigPhpSyntax\ExpressionParser;
 
 use Twig\ExpressionParser\AbstractExpressionParser;

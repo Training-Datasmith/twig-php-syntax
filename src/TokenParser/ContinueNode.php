@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Squirrel\TwigPhpSyntax\TokenParser;
 
 use Twig\Attribute\YieldReady;
@@ -38,7 +40,7 @@ final class ContinueNode extends Node
             ->outdent()
             ->write("}\n")
             // Do the actual continue operation
-            ->write("continue " . $this->loopNumber . ";\n")
+            ->write('continue ' . $this->loopNumber . ";\n")
         ;
     }
 }
