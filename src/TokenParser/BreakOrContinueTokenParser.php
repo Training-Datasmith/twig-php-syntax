@@ -44,7 +44,7 @@ abstract class BreakOrContinueTokenParser extends AbstractTokenParser
                 // Look ahead to find for and endfor tokens to make sure
                 // there are more loops ending than starting
                 $token = $stream->look($i);
-            } catch (SyntaxError $e) {
+            } catch (SyntaxError) {
                 // End of template, leading to SyntaxError
                 break;
             }
@@ -56,7 +56,6 @@ abstract class BreakOrContinueTokenParser extends AbstractTokenParser
                 $loopCount--;
             }
         }
-
         // There should be more loops ending than starting, making loopCount negative
         if ($loopCount >= 0) {
             throw new SyntaxError(
@@ -64,7 +63,10 @@ abstract class BreakOrContinueTokenParser extends AbstractTokenParser
                 $stream->getCurrent()->getLine(),
                 $stream->getSourceContext(),
             );
-        } elseif (\abs($loopCount) < $loopNumber) {
+        }
+
+        // There should be more loops ending than starting, making loopCount negative
+        if (\abs($loopCount) < $loopNumber) {
             throw new SyntaxError(
                 \ucfirst($this->getTag()) . ' tag uses a loop number higher than the actual loops in this context - you are using the number ' . $loopNumber . ' but in the given context the maximum number is ' . \abs($loopCount) . '.',
                 $stream->getCurrent()->getLine(),

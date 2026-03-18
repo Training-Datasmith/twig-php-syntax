@@ -26,10 +26,10 @@ final class ForeachTokenParser extends AbstractTokenParser
         $targets = $this->parseAssignmentExpression();
 
         $stream->expect(Token::BLOCK_END_TYPE);
-        $body = $this->parser->subparse([$this, 'decideForeachFork']);
+        $body = $this->parser->subparse($this->decideForeachFork(...));
         if ($stream->next()->getValue() === 'else') {
             $stream->expect(Token::BLOCK_END_TYPE);
-            $else = new ForElseNode($this->parser->subparse([$this, 'decideForeachEnd'], true), $stream->getCurrent()->getLine());
+            $else = new ForElseNode($this->parser->subparse($this->decideForeachEnd(...), true), $stream->getCurrent()->getLine());
         } else {
             $else = null;
         }
@@ -75,7 +75,7 @@ final class ForeachTokenParser extends AbstractTokenParser
         $targets = [];
         while (true) {
             $token = $this->parser->getCurrentToken();
-            if ($stream->test(Token::OPERATOR_TYPE) && preg_match(Lexer::REGEX_NAME, $token->getValue())) {
+            if ($stream->test(Token::OPERATOR_TYPE) && preg_match(Lexer::REGEX_NAME, (string) $token->getValue())) {
                 // in this context, string operators are variable names
                 $this->parser->getStream()->next();
             } else {
