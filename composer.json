@@ -41,12 +41,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Squirrel\\TwigPhpSyntax\\": "src/"
+            "Squirrel\\Twig_Php_Syntax\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Squirrel\\TwigPhpSyntax\\Tests\\": "tests/"
+            "Squirrel\\Twig_Php_Syntax\\Tests\\": "tests/"
         }
     },
     "scripts": {
