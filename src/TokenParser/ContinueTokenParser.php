@@ -1,22 +1,19 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Squirrel\TwigPhpSyntax\TokenParser;
+declare (strict_types=1);
+namespace Squirrel\Twig_Php_Syntax\Token_Parser;
 
 use Twig\Node\Node;
-
-final class ContinueTokenParser extends BreakOrContinueTokenParser
+final class Continue_Token_Parser extends Break_Or_Continue_Token_Parser
 {
     #[\Override]
-    public function getTag(): string
+    public function get_tag(): string
     {
         return 'continue';
     }
-
     #[\Override]
-    protected function getNodeObject(int $loopNumber, int $lineno): Node
+    protected function get_node_object(int $loop_number, int $lineno): Node
     {
-        return new ContinueNode($loopNumber, $lineno);
+        return new Continue_Node($loop_number, $lineno);
     }
 }
